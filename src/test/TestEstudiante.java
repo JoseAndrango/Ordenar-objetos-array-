@@ -13,10 +13,11 @@ public class TestEstudiante {
         Estudiante [] estudiantes = new Estudiante [n];
         llenaEstudiante(estudiantes);
         System.out.println("estado de estudiantes ordenandos de mayor a menor: ");
-        ordenarEstudiantem(estudiantes);
+        ordenarMayorMenor(estudiantes,n);
         for (Estudiante est:estudiantes){
-            System.out.println(est.getNota());
+            System.out.println(est);
         }
+        
         nroHombres = porcentajegenero(estudiantes);
         System.out.println("el % de h por encima del promedio: "+porcentajePromedio(estudiantes, nroHombres, 'm'));
         System.out.println("el % de m por encima del promedio: "+porcentajePromedio(estudiantes, nroHombres, 'f'));
@@ -90,33 +91,24 @@ public class TestEstudiante {
         }
         return indice; 
     } 
-    public static void ordenarEstudiantem(Estudiante est[]){
-        double nota,notaux;
-        String nombre,nombreaux;
-        char sexo,sexoaux;       
-        boolean bandera=false;
-        while (bandera==false){
-            bandera=true;
-            for(int i=0;i<(est.length);i++){
-                if (est[i].getNota()<est[i+1].getNota()){
-                    notaux=est[i].getNota();
-                    nombreaux=est[i].getNombre();
-                    sexoaux=est[i].getSexo();
-                    
-                    nombre=est[i+1].getNombre();
-                    sexo=est[i+1].getSexo();
-                    nota=est[i+1].getNota();
-                    est[i] = new Estudiante(nombre,sexo,nota);
-                    
-                    est[i+1]=new Estudiante(nombreaux,sexoaux,notaux);
-                    bandera=false;
+    public static void mostrarListado(Estudiante est[], int not){
+        for(int i=0;i<not;i++){
+            System.out.println(est[i].toString());
+        }
+    }
+    public static void ordenarMayorMenor(Estudiante est[], int not){ 
+        for(int i=0;i<not;i++){
+            for(int j=0;j<not-1;j++){
+                if(est[j].getNota()<=est[j+1].getNota()){
+                    Estudiante aux;
+                    aux=est[j];
+                    est[j]=est[j+1];
+                    est[j+1]=aux;
                 }
+                
             }
         }
-        System.out.println("      nombre nota genero");
-        for(int i=0;i<est.length;i++){
-            System.out.println("      "+est[i]);
-        }
+        
     }
 }
 
