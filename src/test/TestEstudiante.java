@@ -12,12 +12,8 @@ public class TestEstudiante {
         int n=datos.nextInt();
         Estudiante [] estudiantes = new Estudiante [n];
         llenaEstudiante(estudiantes);
-        System.out.println("estado de estudiantes ordenandos de mayor a menor: ");
-        ordenarMayorMenor(estudiantes,n);
-        for (Estudiante est:estudiantes){
-            System.out.println(est);
-        }
-        
+        System.out.println("orden de los estudiantes");
+        MayorMenor(estudiantes,n);
         nroHombres = porcentajegenero(estudiantes);
         System.out.println("el % de h por encima del promedio: "+porcentajePromedio(estudiantes, nroHombres, 'm'));
         System.out.println("el % de m por encima del promedio: "+porcentajePromedio(estudiantes, nroHombres, 'f'));
@@ -96,7 +92,7 @@ public class TestEstudiante {
             System.out.println(est[i].toString());
         }
     }
-    public static void ordenarMayorMenor(Estudiante est[], int not){ 
+    public static void MayorMenor(Estudiante est[], int not){ 
         for(int i=0;i<not;i++){
             for(int j=0;j<not-1;j++){
                 if(est[j].getNota()<=est[j+1].getNota()){
@@ -105,10 +101,17 @@ public class TestEstudiante {
                     est[j]=est[j+1];
                     est[j+1]=aux;
                 }
-                
             }
         }
-        
+        System.out.println("mayor a menor");
+        for(int i=0;i<not;i++){
+            System.out.println(est[i]+"  ");
+        }
+        System.out.println("menor a mayor");
+        for (int i=not-1;i>=0;i--){
+            System.out.println(est[i]+"  ");
+        }
+        System.out.println("  ");
     }
 }
 
